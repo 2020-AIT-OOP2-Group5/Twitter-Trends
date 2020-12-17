@@ -6,6 +6,7 @@ import tweepy
 from flask import Flask, request, render_template, redirect
 import datetime
 
+
 pytrends = TrendReq()
 trend = pytrends.trending_searches(pn = 'japan')
 
@@ -33,21 +34,26 @@ print(tweet_list)
 twitter_list = twitter_list.split(" ")
 tweet_list = tweet_list.split(" ")
 
-
-
 auth = tweepy.OAuthHandler(CK, CS)
 auth.set_access_token(AT, AS)
 api = tweepy.API(auth)
 
 top_tweet = []
+tweet_text = ""
+max_retweet = 0
 
 for i in range(5):
-    tweets = api.search(q=twitter_list[i], count=1, tweet_mode='extended')
+
+    tweets = api.search(q=twitter_list[i], count=tweet_list[i], tweet_mode='extended')
     for tweet in tweets:
-        top_tweet.append([tweet.retweet_count,tweet.full_text.replace('\n','')])
+        if max_retweet < tweet.retweet_count:
+            tweet_text = tweet.full_text.replace('\n','')
+            max_retweet = tweet.retweet_count
 
-
+    top_tweet.append(tweet_text)
+    
 print(top_tweet)
+
 
 time = datetime.datetime.now()
 
