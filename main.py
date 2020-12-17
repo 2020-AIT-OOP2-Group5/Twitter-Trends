@@ -4,6 +4,7 @@ from twitter import *
 import re
 import tweepy
 from flask import Flask, request, render_template, redirect
+import datetime
 
 pytrends = TrendReq()
 trend = pytrends.trending_searches(pn = 'japan')
@@ -48,6 +49,9 @@ for i in range(5):
 
 print(top_tweet)
 
+time = datetime.datetime.now()
+
+print(time.strftime('%Y年%m月%d日 %H:%M:%S'))
 
 #ここからweb
 
