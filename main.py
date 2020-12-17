@@ -21,9 +21,9 @@ Pre_Twitter_list = []
 Tweet_Twitter_list = []
 for location in results:
         for trend in location["trends"]:
-            # if trend["tweet_volume"] != None:            
-            Pre_Twitter_list.append(trend["name"])
-            Tweet_Twitter_list.append(trend["tweet_volume"])
+            if trend["tweet_volume"] != None:            
+                Pre_Twitter_list.append(trend["name"])
+                Tweet_Twitter_list.append(trend["tweet_volume"])
 
 twitter_list = ' '.join(Pre_Twitter_list[:5])
 tweet_list = ' '.join(map(str,Tweet_Twitter_list[:5]))
