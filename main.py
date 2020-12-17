@@ -1,5 +1,3 @@
-from flask import Flask, request, render_template, redirect
-
 from pytrends.request import TrendReq
 import pandas, numpy
 from twitter import *
