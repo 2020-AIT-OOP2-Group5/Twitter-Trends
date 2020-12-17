@@ -1,47 +1,37 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Twitterトレンドまとめ</title>
-<link rel="stylesheet", type="text/css", href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <title>Twitterトレンドまとめ</title>
+  <link rel="stylesheet" , type="text/css" , href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-<div id="header">
-  <h1>Twitterトレンドまとめ</h1>
-</div>
-<div id="main">
-  <p>{{ time }}</p><!--何時何分における日本のトレンド-->
-  <div id="tweet">
-	<table>
-		<tr>
-			<td width="40%">{{ twitter_list[0] }}</td><!--〜に関するツイート-->
-			<td width="40%"></td><!--ここにツイート内容を入れる-->
-			<td width="20%">{{ tweet_list[0] }}</td><!--RT数-->
-        </tr>
-        <tr>
-            <td width="40%">{{ twitter_list[1] }}</td><!--〜に関するツイート-->
-			<td width="40%"></td><!--ここにツイート内容を入れる-->
-			<td width="20%">{{ tweet_list[1] }}</td><!--RT数-->
-        </tr>
-        <tr>
-            <td width="40%">{{ twitter_list[2] }}</td><!--〜に関するツイート-->
-			<td width="40%"></td><!--ここにツイート内容を入れる-->
-			<td width="20%">{{ tweet_list[2] }}</td><!--RT数-->
-        </tr>
-        <tr>
-            <td width="40%">{{ twitter_list[3] }}</td><!--〜に関するツイート-->
-			<td width="40%"></td><!--ここにツイート内容を入れる-->
-			<td width="20%">{{ tweet_list[3] }}</td><!--RT数-->
-        </tr>
-        <tr>
-            <td width="40%">{{ twitter_list[4] }}</td><!--〜に関するツイート-->
-			<td width="40%"></td><!--ここにツイート内容を入れる-->
-			<td width="20%">{{ tweet_list[4] }}</td><!--RT数-->
-        </tr>
-	</table>
+  <div id="header">
+    <h1>Twitterトレンドまとめ</h1>
   </div>
-</div>
-<div id="update"><button type="submit" class="btn"><input type="image" src="update.png"></button></div><!--更新ボタン-->
+  <div id="main">
+    <p>{{ time }}</p>
+    <!--何時何分における日本のトレンド-->
+    <div id="tweet">
+      <table>
+        {% for i in range(5) %}
+        <tr>
+          <td width="40%">{{ twitter_list[i] }}</td>
+          <!--〜に関するツイート-->
+          <td width="40%">{{ top_tweet[i] }}</td>
+          <!--ここにツイート内容を入れる-->
+          <td width="20%">{{ tweet_list[i] }}</td>
+          <!--RT数-->
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  <div id="update"><button type="submit" class="btn" onckick="location.href='/koushin'"><input type="image"
+        src="update.png"></button></div>
+  <!--更新ボタン-->
 </body>
+
 </html>
