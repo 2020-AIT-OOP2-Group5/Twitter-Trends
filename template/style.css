@@ -1,17 +1,41 @@
 @charset "UTF-8";
 /* CSS Document */
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+#header{
+	width: 100%;
+	height: 60px;
+	background-color: #00aced;
+}
+#header h1{
+	width: 900px;
+	margin: 0 auto;
+	font-size: 30px;
+	padding: 10px;
+	color: #FFF;
+}
+
+#main{
+	width: 900px;
+	margin: 0 auto;
+	padding: 10px;
+	background-color:#DAF3FF;
+}
 
 #update{
-	width: 70px;
-	height: 70px;
+	width: 60px;
+	height: 60px;
 	position: fixed;
 	z-index:1;
 	bottom: 80px;
 	right: 0px;
 }
 .btn{
-	width: 70px;
-	height: 70px;
+	width: 60px;
+	height: 60px;
 }
 #tweet td{
 	width: 100%;
