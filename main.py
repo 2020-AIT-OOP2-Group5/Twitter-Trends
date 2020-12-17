@@ -3,6 +3,7 @@ import pandas, numpy
 from twitter import *
 import re
 import tweepy
+from flask import Flask, request, render_template, redirect
 
 pytrends = TrendReq()
 trend = pytrends.trending_searches(pn = 'japan')
@@ -44,4 +45,18 @@ for i in range(5):
     for tweet in tweets:
         top_tweet.append([tweet.retweet_count,tweet.full_text.replace('\n','')])
 
+
 print(top_tweet)
+
+
+#ここからweb
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html', tweet_list=tweet_list)
+
+if __name__ == "__main__":
+    app.run(debug=True)
