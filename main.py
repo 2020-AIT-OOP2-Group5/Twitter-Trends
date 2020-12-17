@@ -1,9 +1,9 @@
 from pytrends.request import TrendReq
-from flask import Flask, request, render_template, redirect
 import pandas, numpy
 from twitter import *
 import re
 import tweepy
+from flask import Flask, request, render_template, redirect
 
 pytrends = TrendReq()
 trend = pytrends.trending_searches(pn = 'japan')
@@ -44,6 +44,7 @@ for i in range(5):
     tweets = api.search(q=twitter_list[i], count=1, tweet_mode='extended')
     for tweet in tweets:
         top_tweet.append([tweet.retweet_count,tweet.full_text.replace('\n','')])
+
 
 print(top_tweet)
 
