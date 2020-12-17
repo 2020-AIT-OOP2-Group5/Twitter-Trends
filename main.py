@@ -1,9 +1,10 @@
+from flask import Flask, request, render_template, redirect
+
 from pytrends.request import TrendReq
 import pandas, numpy
 from twitter import *
 import re
 import tweepy
-from flask import Flask, request, render_template, redirect
 
 pytrends = TrendReq()
 trend = pytrends.trending_searches(pn = 'japan')
@@ -20,9 +21,9 @@ Pre_Twitter_list = []
 Tweet_Twitter_list = []
 for location in results:
         for trend in location["trends"]:
-            # if trend["tweet_volume"] != None:            
-            Pre_Twitter_list.append(trend["name"])
-            Tweet_Twitter_list.append(trend["tweet_volume"])
+            if trend["tweet_volume"] != None:            
+                Pre_Twitter_list.append(trend["name"])
+                Tweet_Twitter_list.append(trend["tweet_volume"])
 
 twitter_list = ' '.join(Pre_Twitter_list[:5])
 tweet_list = ' '.join(map(str,Tweet_Twitter_list[:5]))
@@ -32,22 +33,25 @@ print(tweet_list)
 twitter_list = twitter_list.split(" ")
 tweet_list = tweet_list.split(" ")
 
-
-
 auth = tweepy.OAuthHandler(CK, CS)
 auth.set_access_token(AT, AS)
 api = tweepy.API(auth)
 
 top_tweet = []
+tweet_text = ""
+max_retweet = 0
 
 for i in range(5):
-    tweets = api.search(q=twitter_list[i], count=1, tweet_mode='extended')
+
+    tweets = api.search(q=twitter_list[i], count=tweet_list[i], tweet_mode='extended')
     for tweet in tweets:
-        top_tweet.append([tweet.retweet_count,tweet.full_text.replace('\n','')])
+        if max_retweet < tweet.retweet_count:
+            tweet_text = tweet.full_text.replace('\n','')
+            max_retweet = tweet.retweet_count
 
-
+    top_tweet.append(tweet_text)
+    
 print(top_tweet)
-
 
 #ここからweb
 
