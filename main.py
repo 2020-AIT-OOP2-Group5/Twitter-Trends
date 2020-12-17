@@ -38,21 +38,25 @@ auth = tweepy.OAuthHandler(CK, CS)
 auth.set_access_token(AT, AS)
 api = tweepy.API(auth)
 
-top_tweet = []
+top_tweet = ["","","","",""]
 tweet_text = ""
 max_retweet = 0
 
 for i in range(5):
-
+    
     tweets = api.search(q=twitter_list[i], count=tweet_list[i], tweet_mode='extended')
     for tweet in tweets:
         if max_retweet < tweet.retweet_count:
             tweet_text = tweet.full_text.replace('\n','')
             max_retweet = tweet.retweet_count
 
-    top_tweet.append(tweet_text)
+    # top_tweet.append(tweet_text)
+    top_tweet[i] = tweet_text
+    top_tweet[i] = top_tweet[i].split(':',1)[1]
+    max_retweet = 0
+    print(top_tweet[i])
     
-print(top_tweet)
+
 
 
 time = datetime.datetime.now()
