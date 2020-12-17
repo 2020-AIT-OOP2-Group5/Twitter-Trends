@@ -66,7 +66,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', tweet_list=tweet_list)
+    return render_template('index.html',time=time, twitter_list = twitter_list,tweet_list=tweet_list)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
