@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#update{
+	width: 70px;
+	height: 70px;
+	position: fixed;
+	z-index:1;
+	bottom: 80px;
+	right: 0px;
+}
+.btn{
+	width: 70px;
+	height: 70px;
+}
+#tweet td{
+	width: 100%;
+	display: block;
+}
