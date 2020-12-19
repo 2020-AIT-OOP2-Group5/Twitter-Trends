@@ -18,7 +18,8 @@
 			<table>
 				{% for i in range(5) %}
 				<tr>
-					<td width="40%">{{ twitter_list[i] }}</td>
+					<td width="40%"><a href="https://twitter.com/search?q={{ twitter_list[i].replace('#', '%23') }}">{{
+							twitter_list[i] }}</a></td>
 					<!--〜に関するツイート-->
 					<td width="40%">{{ top_tweet[i] }}</td>
 					<!--ここにツイート内容を入れる-->
