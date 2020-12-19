@@ -16,6 +16,11 @@
 		<!--何時何分における日本のトレンド-->
 		<div id="tweet">
 			<table>
+				<tr>
+					<th>トレンド</th>
+					<th>ツイート</th>
+					<th>ツイート数</th>
+				</tr>
 				{% for i in range(5) %}
 				<tr>
 					<td width="40%"><a href="https://twitter.com/search?q={{ twitter_list[i].replace('#', '%23') }}">{{
