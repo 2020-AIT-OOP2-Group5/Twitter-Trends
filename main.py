@@ -5,17 +5,17 @@ import re
 import tweepy
 from flask import Flask, request, render_template, redirect
 import datetime
-
+import json
 
 pytrends = TrendReq()
 trend = pytrends.trending_searches(pn = 'japan')
 
-CK = "6c3ueDtot5JInpVt11Ji2c7wh"
-CS = "8Yw06209wso7ykMK6rEET461QDUXEKhtF6EQ7rVqQRnc1TWqeH"
-AT = "1336913672803733504-hQgzG4BiShULaBoQ8Meno3YQJjltC7"
-AS = "ahbjvKy9mYn0lvlAdJUjmp0A2cetfpeXWMFA3iW6UNOlT"
+json_open = open('Twitter_Key&Token.json','r')
+twitter_key_token = json.load(json_open)
 
-twitter = Twitter(auth = OAuth(AT,AS,CK,CS))
+print(twitter_key_token['AT'])
+
+twitter = Twitter(auth = OAuth(twitter_key_token['AT'],twitter_key_token['AS'],twitter_key_token['CK'],twitter_key_token['CS']))
 results = twitter.trends.place(_id = 23424856)
 
 Pre_Twitter_list = []
@@ -34,8 +34,8 @@ print(tweet_list)
 twitter_list = twitter_list.split(" ")
 tweet_list = tweet_list.split(" ")
 
-auth = tweepy.OAuthHandler(CK, CS)
-auth.set_access_token(AT, AS)
+auth = tweepy.OAuthHandler(twitter_key_token['CK'],twitter_key_token['CS'] )
+auth.set_access_token(twitter_key_token['AT'], twitter_key_token['AS'])
 api = tweepy.API(auth)
 
 top_tweet = ["","","","",""]
