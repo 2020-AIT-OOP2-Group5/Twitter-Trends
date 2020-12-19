@@ -1,27 +1,37 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Twitterトレンドまとめ</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+	<meta charset="UTF-8">
+	<title>Twitterトレンドまとめ</title>
+	<link rel="stylesheet" , type="text/css" , href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-<div id="header">
-  <h1>Twitterトレンドまとめ</h1>
-</div>
-<div id="main">
-  <p></p><!--何時何分における日本のトレンド-->
-  <div id="tweet">
-	<table>
-		<tr>
-			<td width="40%"></td><!--〜に関するツイート-->
-			<td width="40%"></td><!--ここにツイート内容を入れる-->
-			<td width="20%"></td><!--RT数-->
-		</tr>
-	</table>
-  </div>
-</div>
-<div id="update"><button type="submit" class="btn"><input type="image" src="update.png"></button></div><!--更新ボタン-->
+	<div id="header">
+		<h1>Twitterトレンドまとめ</h1>
+	</div>
+	<div id="main">
+		<p>{{ time }}</p>
+		<!--何時何分における日本のトレンド-->
+		<div id="tweet">
+			<table>
+				{% for i in range(5) %}
+				<tr>
+					<td width="40%">{{ twitter_list[i] }}</td>
+					<!--〜に関するツイート-->
+					<td width="40%">{{ top_tweet[i] }}</td>
+					<!--ここにツイート内容を入れる-->
+					<td width="20%">{{ tweet_list[i] }}</td>
+					<!--RT数-->
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	<div id="update"><button type="submit" class="btn" onclick="location.href='/koushin'"><input type="image"
+				src="{{ url_for('static', filename='update.png') }}"></button></div>
+	<!--更新ボタン-->
 </body>
+
 </html>
