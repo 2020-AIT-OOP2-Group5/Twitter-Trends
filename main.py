@@ -14,7 +14,6 @@ trend = pytrends.trending_searches(pn='japan')
 json_open = open('Twitter_Key&Token.json', 'r')
 twitter_key_token = json.load(json_open)
 
-print(twitter_key_token['AT'])
 
 twitter = Twitter(auth=OAuth(
     twitter_key_token['AT'], twitter_key_token['AS'], twitter_key_token['CK'], twitter_key_token['CS']))
@@ -32,8 +31,6 @@ def getTrends():
 
     twitter_list = ' '.join(Pre_Twitter_list[:5])
     tweet_list = ' '.join(map(str, Tweet_Twitter_list[:5]))
-    print(twitter_list)
-    print(tweet_list)
 
     twitter_list = twitter_list.split(" ")
     tweet_list = tweet_list.split(" ")
@@ -56,16 +53,12 @@ def getTrends():
                 tweet_text = tweet.full_text.replace('\n', '')
                 max_retweet = tweet.retweet_count
 
-        # top_tweet.append(tweet_text)
         top_tweet[i] = tweet_text.split(':', 1)[1]
         max_retweet = 0
-        print(top_tweet[i])
 
     time = datetime.datetime.now()
 
     return [time, twitter_list, tweet_list, top_tweet]
-
-#print(time.strftime('%Y年%m月%d日 %H:%M:%S'))
 
 # ここからweb
 
@@ -95,4 +88,4 @@ if __name__ == "__main__":
     twitter_list = results[1]
     tweet_list = results[2]
     top_tweet = results[3]
-    app.run(debug=True)
+    app.run(debug=False)
