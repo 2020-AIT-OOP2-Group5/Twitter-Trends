@@ -8,8 +8,28 @@
 </head>
 
 <body>
+	
 	<div id="header">
-		<h1>Twitterトレンドまとめ</h1>
+		<div id="navi">
+			<h1>Twitterトレンドまとめ</h1>
+			<div id="past">
+				<!--
+				<p class="main_menu">過去のトレンド</p>
+					<ul class="submenu">
+						<li>1月1日何時何分</li>
+						<li>child</li>
+						<li>child</li>
+					</ul>
+					-->
+				<forma action=”#”>
+					<select name=”過去のトレンド”>
+						<option>過去のトレンド</option>
+						<option value=”#″><!--何月何日何時何分--></option>
+						<!--valueのところにurlを貼れば、そこに飛べる-->
+					</select>
+				</form>
+			</div>
+		</div>
 	</div>
 	<div id="main">
 		<p>{{ time }}</p>
