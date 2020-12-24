@@ -12,15 +12,29 @@
 ### 大まかな仕様(Webアプリケーション側)
 APIによって撮ってきた情報と現在時刻をflaskを用いてwebにあげる。
 
-### 必読
-- Twitterアカウントの保護のためkeyやtokenは別ファイルに移してあります。  
-そのファイルをmain.pyと同じ階層に入れて実行をしないとプログラムが動かないのでよろしくお願いします。(追記：TwitterーTrendsをカレントディレクトリにして実行してください)
-- プログラムはmain.pyを実行し、その際に表示されるurlをブラウザで開くことで実行できる。
+## 必読
+- configfile 
+    - Twitter_Key&Token.json  
 
-### 使用しているライブラリ一覧
+        {
+  "CK":"XXXXXXXXXXXXXXXXXXXXXX",
+  "CS":"XXXXXXXXXXXXXXXXXXXXXX",
+  "AT":"XXXXXXXXXXXXXXXXXXXXXX",
+  "AS":"XXXXXXXXXXXXXXXXXXXXXX"
+}
+- 上記のTwitter_Key&Token.jsonをmain.pyと同じ階層に入れてください。
+- 班員へ
+    - configfileはTeamsにアップしてあります。
+
+## 使用しているライブラリ一覧
 |ライブラリ名|インストール手法|
 |:---:|:---:|
 |pytrends|pip install pytrends|
 |tweepy|pip install tweepy|
 |twitter|pip install twitter|
 |flask|pip install Flask|
+
+
+## 実行手順
+Twitter-Trendsをカレントディレクトリにし、main.pyを実行する。  
+その際に表示されるurlを踏むとwebアプリケーションが実行されます。
